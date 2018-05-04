@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    #register-popup{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        position: absolute;
+        border-radius: 10px;
+        height: 500px;
+        width: 20%;
+        text-align: center;
+
+    }
+    .top-btn{
+        position: absolute;
+        top: 0;
+        width: 50%;
+        height:60px;
+        text-align: center;
+        font-family: "Lato Light";
+        border-bottom: solid 1px  #BDBDBD;
+        background-color: #e7e7e7;
+        color: #606060;
+    }
+
+    .top-btn:hover{
+        cursor: pointer;
+    }
+
+    #top-btn-reg{
+        left: 50%;
+        /*border-left: solid 1px  #BDBDBD;*/
+        border-top-right-radius: 10px;
+    }
+
+    #top-btn-log{
+        left: 0;
+        border-top-left-radius: 10px;
+    }
+
+    .active{
+        background-color: white;
+        color: black;
+        border-bottom: none;
+    }
+
+    .active:hover{
+        cursor: auto;
+    }
+
+    #register-popup input{
+        margin-top: 20px;
+        width: 280px;
+        font-size: 20px;
+        font-family: "Lato Light";
+        border-radius: 5px;
+        border: solid 1px  #BDBDBD;
+        padding: 4px;
+    }
+
+    #register-fullname-input{
+        margin-top: 200px;
+    }
+
+    .btn{
+        border-radius: 5px;
+        border: solid 1px  #BDBDBD;
+        padding: 5px;
+        padding-left: 20px;
+        padding-right: 20px;
+        width: 160px;
+        font-family: "Lato Light";
+    }
+
+    .btn:hover{
+        cursor: pointer;
+    }
+
+    #login-mail-input{
+        display: none;
+    }
+
+    #login-pass-input{
+        display: none;
+    }
+
+    #btn-login{
+        display: none;
+    }
+
+
+
+
+</style>
+
+
+<body>
+
+
+<div id="register-popup">
+    <div id="top-btn-log" class="top-btn"><br>Sign In</div>
+    <div id="top-btn-reg" class="top-btn active"><br>Register</div>
+    <br> <br> <br>
+    <br>
+    <input id="register-fullname-input" placeholder="Full name...">
+    <input id="register-mail-input" placeholder="Mail...">
+    <input id="register-pass-1-input" placeholder="Password...">
+    <input id="register-pass-2-input" placeholder="Password repeat...">
+
+    <input id="login-mail-input" placeholder="Mail...">
+    <input id="login-pass-input" placeholder="Password...">
+    <br>
+    <br>
+    <br>
+    <span id="btn-register" class="btn">Register</span>
+    <span id="btn-login" class="btn">Login</span>
+
+
+</div>
+
+</body>
+</html>

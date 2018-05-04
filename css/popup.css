@@ -1,0 +1,102 @@
+#cover {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left:0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 3;
+
+}
+
+#register-popup{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: absolute;
+    border-radius: 10px;
+    height: 450px;
+    width: 20%;
+    left:40%;
+    top: 160px;
+    text-align: center;
+    z-index: 4;
+    background-color: white;
+
+}
+.top-btn{
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height:60px;
+    text-align: center;
+    font-family: "Lato Light";
+    border-bottom: solid 1px  #BDBDBD;
+    background-color: #f4f4f4;
+    color: #606060;
+}
+
+.top-btn:hover{
+    cursor: pointer;
+}
+
+
+
+#top-btn-reg{
+    left: 50%;
+    /*border-left: solid 1px  #BDBDBD;*/
+    border-top-right-radius: 10px;
+}
+
+#top-btn-log{
+    left: 0;
+    border-top-left-radius: 10px;
+}
+
+.active{
+    background-color: white;
+    color: black;
+    border-bottom: none;
+}
+
+.active:hover{
+    cursor: auto;
+}
+
+#register-popup input{
+    margin-top: 20px;
+    width: 280px;
+    font-size: 20px;
+    font-family: "Lato Light";
+    border-radius: 5px;
+    border: solid 1px  #BDBDBD;
+    padding: 4px;
+}
+
+#register-fullname-input{
+    margin-top: 200px;
+}
+
+.btn{
+    border-radius: 5px;
+    border: solid 1px  #BDBDBD;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 160px;
+    font-family: "Lato Light";
+}
+
+.btn:hover{
+    cursor: pointer;
+}
+
+#login-mail-input{
+    display: none;
+}
+
+#login-pass-input{
+    display: none;
+}
+
+#btn-login{
+    display: none;
+}

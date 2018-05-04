@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <link rel="stylesheet" type="text/css" href="css/schedule.css">
+    <link rel="stylesheet" type="text/css" href="css/popup.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+
+
+
+            $('.view-select').on('change', function() {
+                if(this.value == "classic"){
+                    alert('test1');
+                    /*$("#tab-sched-2").hide();
+                    $("#tab-cont-div").hide();
+
+                    $("#tab-sched-1").fadeIn();*/
+
+                }
+                if(this.value == "nurse"){
+                    alert('test2');
+                    /*$("#tab-sched-1").hide();
+
+                    $("#tab-sched-2").fadeIn();
+                    $("#tab-cont-div").fadeIn();*/
+                }
+            })
+
+            $('#top-btn-reg').click(function () {
+                $('#login-mail-input').hide();
+                $('#login-pass-input').hide();
+                $('#btn-login').hide();
+                $('#register-fullname-input').show();
+                $('#register-mail-input').show();
+                $('#register-pass-1-input').show();
+                $('#register-pass-2-input').show();
+                $('#btn-register').show();
+
+                $('#top-btn-log').removeClass('active');
+                $('#top-btn-reg').addClass('active');
+            });
+
+            $('#top-btn-log').click(function () {
+                $('#login-mail-input').show();
+                $('#login-pass-input').show();
+                $('#btn-login').show();
+                $('#register-fullname-input').hide();
+                $('#register-mail-input').hide();
+                $('#register-pass-1-input').hide();
+                $('#register-pass-2-input').hide();
+                $('#btn-register').hide();
+                $('#top-btn-log').addClass('active');
+                $('#top-btn-reg').removeClass('active');
+            });
+
+
+
+
+
+
+            /*$.ajax({
+                url: "php/controller/MainController.php",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    opt: 1,
+                }
+            }).done(function (msg) {
+                $("#content").html(msg);
+            });*/
+        })
+    </script>
+
+</head>
+<body>
+
+<div id="header">
+
+    <h1>Nurse Scheduling</h1>
+
+    <select class="selectpicker week-select">
+        <option>Week 1</option>
+        <option>Week 2</option>
+        <option>Week 3</option>
+        <option>Week 4</option>
+        <option>Week 5</option>
+    </select>
+
+    <select class="selectpicker view-select">
+        <option value="classic">Classic View</option>
+        <option value="nurse">Nurse View</option>
+    </select>
+
+    <div id="btn-log">
+        Sign In/Register
+    </div>
+
+
+</div>
+
+<section id="content">
+
+
+</section>
+
+
+<div id="register-popup">
+    <div id="top-btn-log" class="top-btn"><br>Sign In</div>
+    <div id="top-btn-reg" class="top-btn active"><br>Register</div>
+    <br> <br> <br>
+    <br>
+    <input id="register-fullname-input" placeholder="Full name...">
+    <input id="register-mail-input" placeholder="Mail...">
+    <input id="register-pass-1-input" placeholder="Password...">
+    <input id="register-pass-2-input" placeholder="Password repeat...">
+
+    <input id="login-mail-input" placeholder="Mail...">
+    <input id="login-pass-input" placeholder="Password...">
+    <br>
+    <br>
+    <br>
+    <span id="btn-register" class="btn">Register</span>
+    <span id="btn-login" class="btn">Sign In</span>
+
+
+</div>
+
+<div id="cover">
+</div>
+
+</body>
+</html>
