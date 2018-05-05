@@ -5,7 +5,21 @@
  * Date: 2018-05-02
  * Time: 22:49
  */
+error_reporting(E_ALL ^ E_NOTICE);
 
-require_once '../views/MainTableView.php';
 
-echo MainTableView;
+
+//echo MainTableView;
+
+//echo json_encode('test3');
+
+if(isset($_POST)){
+
+    if($_POST['opt'] == 1 ){
+        require_once '../views/MainTableView.php';
+    }
+    if($_POST['opt'] == 2 ){
+        require_once '../views/NurseTableView.php';
+    }
+
+}

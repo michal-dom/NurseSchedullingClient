@@ -23,23 +23,35 @@
 
             $('.view-select').on('change', function() {
                 if(this.value == "classic"){
-                    alert('test1');
-                    /*$("#tab-sched-2").hide();
-                    $("#tab-cont-div").hide();
-
-                    $("#tab-sched-1").fadeIn();*/
+                    $("#content").html('');
+                    $.ajax({
+                        url: "php/controllers/MainController.php",
+                        type: "POST",
+                        dataType: "html",
+                        data: {
+                            opt: 1
+                        }
+                    }).done(function (msg) {
+                        $("#content").html(msg);
+                    })
 
                 }
                 if(this.value == "nurse"){
-                    alert('test2');
-                    /*$("#tab-sched-1").hide();
-
-                    $("#tab-sched-2").fadeIn();
-                    $("#tab-cont-div").fadeIn();*/
+                    $("#content").html('');
+                    $.ajax({
+                        url: "php/controllers/MainController.php",
+                        type: "POST",
+                        dataType: "html",
+                        data: {
+                            opt: 2
+                        }
+                    }).done(function (msg) {
+                        $("#content").html(msg);
+                    })
                 }
             })
 
-            $('#top-btn-reg').click(function () {
+            $('#top-btn-reg').click(function (event) {
                 $('#login-mail-input').hide();
                 $('#login-pass-input').hide();
                 $('#btn-login').hide();
@@ -51,9 +63,10 @@
 
                 $('#top-btn-log').removeClass('active');
                 $('#top-btn-reg').addClass('active');
+                event.stopPropagation();
             });
 
-            $('#top-btn-log').click(function () {
+            $('#top-btn-log').click(function (event) {
                 $('#login-mail-input').show();
                 $('#login-pass-input').show();
                 $('#btn-login').show();
@@ -62,8 +75,17 @@
                 $('#register-pass-1-input').hide();
                 $('#register-pass-2-input').hide();
                 $('#btn-register').hide();
+
                 $('#top-btn-log').addClass('active');
                 $('#top-btn-reg').removeClass('active');
+                event.stopPropagation();
+            });
+
+
+            $('#cover').click(function (event) {
+                $('#register-popup').hide();
+                $('#cover').hide();
+
             });
 
 
@@ -91,7 +113,7 @@
 
     <h1>Nurse Scheduling</h1>
 
-    <select class="selectpicker week-select">
+    <select class="selectpicker week-select" style="visibility: hidden">
         <option>Week 1</option>
         <option>Week 2</option>
         <option>Week 3</option>
@@ -99,7 +121,7 @@
         <option>Week 5</option>
     </select>
 
-    <select class="selectpicker view-select">
+    <select class="selectpicker view-select" style="visibility: hidden">
         <option value="classic">Classic View</option>
         <option value="nurse">Nurse View</option>
     </select>
