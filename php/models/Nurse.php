@@ -6,7 +6,7 @@
  * Time: 12:21
  */
 
-class Nurse
+class Nurse extends Entity
 {
     private $id;
     private $name;
@@ -31,4 +31,9 @@ class Nurse
     }
 
 
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return "";
+    }
 }

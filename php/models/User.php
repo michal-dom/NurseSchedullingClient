@@ -6,7 +6,7 @@
  * Time: 12:21
  */
 
-class User
+class User extends Entity
 {
     private $mail;
     private $pass;

@@ -6,6 +6,9 @@
  * Time: 15:07
  */
 
+require_once 'Entity.php';
+require_once '../factories/Factory.php';
+
 class Collection implements \Iterator
 {
 

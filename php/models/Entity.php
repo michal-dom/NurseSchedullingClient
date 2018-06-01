@@ -6,7 +6,7 @@
  * Time: 14:01
  */
 
-class Entity
+abstract class Entity
 {
-
+    public abstract function __toString();
 }

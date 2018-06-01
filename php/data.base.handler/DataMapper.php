@@ -6,6 +6,9 @@
  * Time: 21:15
  */
 
+require_once 'Connection.php';
+require_once '../models/Collection.php';
+
 abstract class DataMapper
 {
 

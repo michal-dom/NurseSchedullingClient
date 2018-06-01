@@ -6,16 +6,38 @@
  * Time: 13:56
  */
 
-class Shift
+require_once ("Entity.php");
+
+class Shift extends Entity
 {
     private $date;
     private $nurse;
     private $type;
 
     /**
+     * Shift constructor.
+     * @param $date
+     * @param $nurse
+     * @param $type
+     */
+    public function __construct(int $date, int $nurse, int $type)
+    {
+        $this->date = $date;
+        $this->nurse = $nurse;
+        $this->type = $type;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->date . " " . $this->nurse . " " . $this->type;
+    }
+
+
+    /**
      * @return mixed
      */
-    public function getDate()
+    public function getDate():int
     {
         return $this->date;
     }
@@ -31,7 +53,7 @@ class Shift
     /**
      * @return mixed
      */
-    public function getNurse()
+    public function getNurse():int
     {
         return $this->nurse;
     }
@@ -47,7 +69,7 @@ class Shift
     /**
      * @return mixed
      */
-    public function getType()
+    public function getType():int
     {
         return $this->type;
     }

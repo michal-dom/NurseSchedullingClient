@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: Michał Domagała
  * Date: 2018-05-05
- * Time: 13:58
+ * Time: 17:05
  */
 
-abstract class Mapper
+class Authorization
 {
-
 
 }
