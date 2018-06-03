@@ -11,42 +11,68 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
     <link rel="stylesheet" type="text/css" href="css/schedule.css">
+    <link rel="stylesheet" type="text/css" href="css/tab3.css">
     <link rel="stylesheet" type="text/css" href="css/popup.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 
     <script>
         $(document).ready(function () {
+            $('.to-hide').hide();
+            $('#test').hide();
+            $('#content').hide();
 
+            $("#welcome-btn").click(function () {
+                $('#welcome-page').delay( 100 ).fadeOut( 800 );
+                $('.to-hide').delay( 1000 ).fadeIn(800);
+                $('#content').delay( 1500 ).fadeIn(800);
+            })
 
+            $('#welcome-page h1').hide();
+            $('#welcome-page h2').hide();
+            $( "#welcome-page h1" ).delay( 500 ).fadeIn( 800 );
+            $( "#welcome-page h2" ).delay( 1300 ).fadeIn( 800 );
 
+            foo = function () {
+                $("#tab-sched-1 td").hover(function() {
+                    console.log($(this).attr("class"));
+                    $('.'+$(this).attr("class")).css('background-color', '#f6f6f6');
+                }, function() {
+                    $('.'+$(this).attr("class")).css('background-color', 'white');
+                });
+            };
 
             $('.view-select').on('change', function() {
                 if(this.value == "classic"){
                     $("#content").html('');
                     $.ajax({
-                        url: "php/controllers/MainController.php",
+                        url: "php/controllers/ScheduleController.php",
                         type: "POST",
                         dataType: "html",
                         data: {
-                            opt: 1
+                            opt: 1,
+                            date_from: "2018-05-08 07:00:00"
                         }
                     }).done(function (msg) {
                         $("#content").html(msg);
+                        foo();
                     })
 
                 }
                 if(this.value == "nurse"){
                     $("#content").html('');
                     $.ajax({
-                        url: "php/controllers/MainController.php",
+                        url: "php/controllers/ScheduleController.php",
                         type: "POST",
                         dataType: "html",
                         data: {
-                            opt: 2
+                            opt: 2,
+                            date_from: "2018-05-08 07:00:00",
+                            nurse_id: 10
                         }
                     }).done(function (msg) {
                         $("#content").html(msg);
+                        foo();
                     })
                 }
             })
@@ -93,6 +119,7 @@
 
 
 
+
             /*$.ajax({
                 url: "php/controller/MainController.php",
                 type: "POST",
@@ -109,25 +136,42 @@
 </head>
 <body>
 
-<div id="header">
+
+<div id="welcome-page">
+    <h1 id="test">Nurse Scheduling</h1>
+    <h2 id="welcome-btn">Sign Up/Register</h2>
+
+</div>
+
+<div id="header" class="to-hide">
+
 
     <h1>Nurse Scheduling</h1>
 
     <select class="selectpicker week-select" style="visibility: hidden">
-        <option>Week 1</option>
-        <option>Week 2</option>
-        <option>Week 3</option>
-        <option>Week 4</option>
-        <option>Week 5</option>
+        <option value="default">--Select week--</option>
+        <option value="2018-05-08 07:00:00">2018.05.07 - 2018.05.13</option>
+        <option value="2018-05-14 07:00:00">2018.05.14 - 2018.05.20</option>
+        <option value="2018-05-21 07:00:00">2018.05.21 - 2018.05.27</option>
+        <option value="2018-05-28 07:00:00">2018.05.28 - 2018.06.03</option>
+        <option value="2018-06-04 07:00:00">2018.06.04 - 2018.06.10</option>
+
     </select>
 
     <select class="selectpicker view-select" style="visibility: hidden">
+        <option value="default">--Select View--</option>
         <option value="classic">Classic View</option>
         <option value="nurse">Nurse View</option>
+        <option value="personal">Personal Week View</option>
+        <option value="month">Personal Month View</option>
     </select>
 
+    <div id="user">
+        ZOFIA WISNIEWSKA
+    </div>
+
     <div id="btn-log">
-        Sign In/Register
+        Log out
     </div>
 
 
@@ -139,7 +183,7 @@
 </section>
 
 
-<div id="register-popup">
+<div id="register-popup" class="to-hide">
     <div id="top-btn-log" class="top-btn"><br>Sign In</div>
     <div id="top-btn-reg" class="top-btn active"><br>Register</div>
     <br> <br> <br>
@@ -160,8 +204,25 @@
 
 </div>
 
-<div id="cover">
+<div id="cover" class="to-hide">
 </div>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

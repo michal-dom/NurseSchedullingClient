@@ -17,10 +17,11 @@ class NurseFactory extends Factory
     {
         // TODO: Implement createObject() method.
 
-        $nurse = new Nurse((int) $row['id_nurse'],
+        $nurse = new Nurse((int) $row['id'],
             (string) $row['name'],
             (string) $row['surname'],
             (string) $row['type'],
-            (int) $row['hours']);
+            (int) $row['work_hours']);
+        return $nurse;
     }
 }

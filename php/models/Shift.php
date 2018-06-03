@@ -30,7 +30,7 @@ class Shift extends Entity
     public function __toString()
     {
         // TODO: Implement __toString() method.
-        return $this->date . " " . $this->nurse . " " . $this->type;
+        return date("Y-m-d H:i:s",$this->date) . " " . $this->nurse . " " . $this->type;
     }
 
 

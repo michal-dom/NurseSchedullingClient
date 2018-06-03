@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:900');
+
+
+#tab-sched-3{
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+#tab-sched-3 td {
+    padding: 5px;
+    font-family: "Lato Light";
+    text-align: left;
+    /*border: solid 0.5px black;*/
+    font-size: 12px;
+}
+
+#tab-sched-3 th {
+    padding: 10px;
+    font-family: 'Playfair Display', serif;
+    text-align: left;
+
+}
+
+#tab-sched-3 .working{
+    background-color: #5bc0de;
+}
+
+#tab-sched-3 tr {
+    /*border-bottom: solid 0.5px #ffffff;*/
+    /*border-top: solid 0.5px #ffffff;*/
+}
+
+#tab-sched-3 td {
+    /*border-right: solid 0.5px #ffffff;*/
+    /*border-left: solid 0.5px #ffffff;*/
+}
+
+
+#tab-sched-3 tr:hover {
+    background-color: #f6f6f6;
+    cursor: pointer;
+
+}
+
+/*#tab-sched-3 td:hover {*/
+    /*border-right: solid 0.5px #6a6a6a;*/
+    /*border-left: solid 0.5px #6a6a6a;*/
+    /*cursor: pointer;*/
+/*}*/
