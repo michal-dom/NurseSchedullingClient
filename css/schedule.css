@@ -21,6 +21,7 @@
     left:calc(50% - 200px);
     font-family: "Lato Light";
     font-size: 24px;
+
     /*visibility: hidden;*/
 }
 
@@ -204,3 +205,4 @@
 #tab-sched-2 th{
     background-color: #ececec;
 }
+

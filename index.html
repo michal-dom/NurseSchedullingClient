@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="css/schedule.css">
     <link rel="stylesheet" type="text/css" href="css/tab3.css">
     <link rel="stylesheet" type="text/css" href="css/popup.css">
+    <link rel="stylesheet" type="text/css" href="css/card.view.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 
@@ -36,13 +37,27 @@
             foo = function () {
                 $("#tab-sched-1 td").hover(function() {
                     console.log($(this).attr("class"));
-                    $('.'+$(this).attr("class")).css('background-color', '#f6f6f6');
+                    $('.'+$(this).attr("class")).css('background-color', 'black');
+                    $('.'+$(this).attr("class")).css('color', 'white');
                 }, function() {
                     $('.'+$(this).attr("class")).css('background-color', 'white');
+                    $('.'+$(this).attr("class")).css('color', 'black');
                 });
             };
 
+            generate_cards = function () {
+                $(".card").hide();
+                for(i = 0; i < 19; i++){
+                    $(".card-"+i).delay(250 + 250*i).fadeIn( 600 );
+                }
+            }
+
             $('.view-select').on('change', function() {
+                var select_date = $(".week-select").val();
+
+                if(select_date == "default"){
+                    return;
+                }
                 if(this.value == "classic"){
                     $("#content").html('');
                     $.ajax({
@@ -51,7 +66,7 @@
                         dataType: "html",
                         data: {
                             opt: 1,
-                            date_from: "2018-05-08 07:00:00"
+                            date_from: "2018-05-07 07:00:00"
                         }
                     }).done(function (msg) {
                         $("#content").html(msg);
@@ -59,7 +74,7 @@
                     })
 
                 }
-                if(this.value == "nurse"){
+                if(this.value == "personal-week"){
                     $("#content").html('');
                     $.ajax({
                         url: "php/controllers/ScheduleController.php",
@@ -67,12 +82,29 @@
                         dataType: "html",
                         data: {
                             opt: 2,
-                            date_from: "2018-05-08 07:00:00",
+                            date_from: "2018-05-07 07:00:00",
                             nurse_id: 10
                         }
                     }).done(function (msg) {
                         $("#content").html(msg);
                         foo();
+                    })
+                }
+                if(this.value == "personal-month"){
+                    $("#content").html('');
+                    $.ajax({
+                        url: "php/controllers/ScheduleController.php",
+                        type: "POST",
+                        dataType: "html",
+                        data: {
+                            opt: 4,
+                            date_from: "2018-05-07 07:00:00",
+                            nurse_id: 10
+                        }
+                    }).done(function (msg) {
+                        $("#content").html(msg);
+                        foo();
+                        generate_cards();
                     })
                 }
             })
@@ -114,22 +146,6 @@
 
             });
 
-
-
-
-
-
-
-            /*$.ajax({
-                url: "php/controller/MainController.php",
-                type: "POST",
-                dataType: "json",
-                data: {
-                    opt: 1,
-                }
-            }).done(function (msg) {
-                $("#content").html(msg);
-            });*/
         })
     </script>
 
@@ -150,7 +166,7 @@
 
     <select class="selectpicker week-select" style="visibility: hidden">
         <option value="default">--Select week--</option>
-        <option value="2018-05-08 07:00:00">2018.05.07 - 2018.05.13</option>
+        <option value="2018-05-07 07:00:00">2018.05.07 - 2018.05.13</option>
         <option value="2018-05-14 07:00:00">2018.05.14 - 2018.05.20</option>
         <option value="2018-05-21 07:00:00">2018.05.21 - 2018.05.27</option>
         <option value="2018-05-28 07:00:00">2018.05.28 - 2018.06.03</option>
@@ -161,9 +177,8 @@
     <select class="selectpicker view-select" style="visibility: hidden">
         <option value="default">--Select View--</option>
         <option value="classic">Classic View</option>
-        <option value="nurse">Nurse View</option>
-        <option value="personal">Personal Week View</option>
-        <option value="month">Personal Month View</option>
+        <option value="personal-week">Personal Week View</option>
+        <option value="personal-month">Personal Month View</option>
     </select>
 
     <div id="user">
@@ -203,6 +218,10 @@
 
 
 </div>
+
+<!--<div id="login-title" class="to-hide">-->
+    <!--<h1>Nurse <br />Scheduling</h1>-->
+<!--</div>-->
 
 <div id="cover" class="to-hide">
 </div>

@@ -4,7 +4,15 @@
 #tab-sched-3{
     border-collapse: collapse;
     table-layout: fixed;
+
+    position: absolute;
+    top: 0;
+    left:0;
+    height: 80%;
+    width: 100%;
 }
+
+
 
 #tab-sched-3 td {
     padding: 5px;
@@ -13,6 +21,12 @@
     /*border: solid 0.5px black;*/
     font-size: 12px;
 }
+
+#tab-sched-3 .td-h {
+    text-align: center;
+    /*border: solid 0.5px black;*/
+}
+
 
 #tab-sched-3 th {
     padding: 10px;

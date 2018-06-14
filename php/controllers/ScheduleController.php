@@ -87,14 +87,8 @@ if(isset($_POST)){
         $hours = array();
 
         for($i = 0; $i < $collection->getTotal(); $i++ ){
-//            echo $collection->getRow($i);
-//            echo "<br>";
-//            echo (int) date("H",$collection->getRow($i)->getDate());
-//            echo "<br>";
-//            echo (int) date("N",$collection->getRow($i)->getDate());
-            array_push($days, ((int) date("N",$collection->getRow($i)->getDate()))-2);
+            array_push($days, ((int) date("N",$collection->getRow($i)->getDate()))-1);
             array_push($hours, (int) date("H",$collection->getRow($i)->getDate()));
-//            echo "<br>";
 
         }
 
@@ -107,66 +101,91 @@ if(isset($_POST)){
             5 => 'Sa',
             6 => 'Su',
         );
+
         echo "<table id='tab-sched-3' style=\"width: 100%\">";
         echo "<tr>";
-        echo "<th>Time</th>";
-        for ($i = 0; $i < 7; $i++ ) {
-            echo "<th>" . $day_names[$i % 7] . "</th>";
+        echo "<td class='tdh'>Day</td>";
+        for ($i = 0; $i < 24; $i++ ) {
+            echo "<td class='td-h'>" . date("h:i", mktime($i, 0, 0))." <br>-<br> ". date("h:i", mktime($i+1, 0, 0)) . "</td>";
         }
         echo "</tr>";
         $counter = 0;
-        for ($i = 0; $i < 24; $i++ ) {
 
+        $k = 0;
+        for ($i = 0; $i < 7; $i++ ) {
             echo "<tr>";
-            echo "<td>".date("h:i", mktime($i, 0, 0))." - ". date("h:i", mktime($i+1, 0, 0)) ."</td>";
+            echo "<td>".$day_names[$i % 7] ."</td>";
+            for ($j = 0; $j < 24; $j++) {
+                if(in_array($i, $days)) {
 
-            for ($j = 0; $j < 7; $j++) {
-                if(in_array($j, $days)) {
-                    $key = array_search($j, $days);
-                    if($hours[$key] == $i ){
+                    $key = array_search($i, $days);
+                    if($hours[$key] == $j ){
                         $counter = 8;
                     }
-                }
-                if($counter > 0) {
-                    $counter--;
-                    echo "<td class='working'></td>";
-                } else {
-                    echo "<td class='day-off'></td>";
-                }
+                    if($counter > 0) {
+                        $counter--;
+                        echo "<td class='working'></td>";
+                    } else {
+                        echo "<td class='day-off'></td>";
+                    }
 
-
-//                if(in_array($j, $days)){
-//                    $key = array_search($j, $days);
-//                    if($hours[$key] <= $i && $hours[$key]+8 > $i){
-//                        echo "<td class='working'></td>";
-//                    } else {
-//                        echo "<td class='day-off'></td>";
+                }
+//                if(in_array($i, $days)) {
+//                    echo "<td class='working'>day = $i hour = $j</td>";
+//                    $key = array_search($i, $days);
+//                    if($hours[$key] == $j ){
+//                        $counter = 8;
 //                    }
-//
-//                } else {
-//                    echo "<td class='day-off'></td>";
 //                }
-
-//                echo "<td>test</td>";
+//                if($counter > 0) {
+//                    $counter--;
+//                    echo "<td class='working'>day = $i hour = $j</td>";
+//                } else {
+//                    echo "<td class='day-off'>day = $i hour = $j</td>";
+//                }
             }
             echo "</tr>";
-        }
 
+        }
         echo "</table>";
 
-    }
-    if($_POST['opt'] == 4 ) {
-        echo "<div>test</div>";
 
+    }
+    if($_POST['opt'] == 3 ) {
+
+    }
+
+
+
+    if($_POST['opt'] == 4 ) {
         $nurse_id = $_POST['nurse_id'];
 
         $shift_mapper = new ShiftMapper();
-        $collection = $shift_mapper->selectWeekForNurse($_POST['date_from'], $nurse_id, 1);
-        $collection->createAll();
+        $shifts_collection = $shift_mapper->selectWeekForNurse($_POST['date_from'], $nurse_id, 1);
+        $shifts_collection->createAll();
 
-        for($i = 0; $i < $collection->getTotal(); $i++ ){
-            echo $collection->getRow($i);
-            echo "<br>";
+
+        $shift_names = array(
+            1 => 'Early',
+            2 => 'Day',
+            3 => 'Late',
+            4 => 'Night'
+        );
+
+        for($i = 0; $i < $shifts_collection->getTotal(); $i++ ){
+//            echo $shifts_collection->getRow($i);
+//            date("Y-m-d H:i:s",$this->date) . " " . $this->nurse . " " . $this->type;
+            echo "<div class='card card-$i'> <span class='date-card'>".date("d M",$shifts_collection->getRow($i)->getDate())."</span><br />";
+            echo "<span>Start at: ".date("h:i",$shifts_collection->getRow($i)->getDate())."</span><br>";
+            $style = "style='bottom:";
+            $style .= rand(-10, 5);
+            $style .= "px;";
+            $style .= " left:";
+            $style .= rand(-5, 5);
+            $style .= "px;'";
+            echo " <span class='shift-card shift-card-".$shifts_collection->getRow($i)->getType()."'>".$shift_names[$shifts_collection->getRow($i)->getType()]."</span>";
+
+            echo "</div><br>";
 //            echo (int) date("H",$collection->getRow($i)->getDate());
 //            echo "<br>";
 //            echo (int) date("N",$collection->getRow($i)->getDate());

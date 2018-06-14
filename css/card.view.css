@@ -1,0 +1,175 @@
+@import "https://fonts.googleapis.com/css?family=Montserrat";
+@import "https://fonts.googleapis.com/css?family=Lato";
+@import url('https://fonts.googleapis.com/css?family=Monoton');
+
+.card{
+    position:absolute;
+    font-family: "Lato Light";
+    padding: 10px;
+    width: calc(20% - 10px);
+    height: 120px;
+    font-size: 20px;
+
+}
+
+.card:hover{
+    cursor: pointer;
+    background-color: #f6f6f6;
+}
+
+.date-card{
+    font-size: 40px;
+    font-family: 'Monoton', cursive;
+}
+
+
+
+.card-0{
+    top:0;
+    left: 0;
+}
+
+.card-1{
+    top:0;
+    left: 20%;
+}
+
+.card-2{
+    top:0;
+    left: 40%;
+}
+
+.card-3{
+    top:0;
+    left: 60%;
+}
+
+.card-4{
+    top:0;
+    left: 80%;
+}
+
+.card-5{
+    top:150px;
+    left: 0;
+}
+
+.card-6{
+    top:150px;
+    left: 20%;
+}
+
+.card-7{
+    top:150px;
+    left: 40%;
+}
+
+.card-8{
+    top:150px;
+    left: 60%;
+}
+
+.card-9{
+    top:150px;
+    left: 80%;
+}
+
+.card-10{
+    top:300px;
+    left: 0;
+}
+
+.card-11{
+    top:300px;
+    left: 20%;
+}
+
+.card-12{
+    top:300px;
+    left: 40%;
+}
+
+.card-13{
+    top:300px;
+    left: 60%;
+}
+
+.card-14{
+    top:300px;
+    left: 80%;
+}
+
+.card-15{
+    top:450px;
+    left: 0;
+}
+
+.card-16{
+    top:450px;
+    left: 20%;
+}
+
+.card-17{
+    top:450px;
+    left: 40%;
+}
+
+.card-18{
+    top:450px;
+    left: 60%;
+}
+
+.card-19{
+    top:450px;
+    left: 80%;
+}
+
+.card-20{
+    top:700px;
+    left: 0;
+}
+
+.card-21{
+    top:700px;
+    left: 20%;
+}
+
+.card-22{
+    top:700px;
+    left: 40%;
+}
+
+.card-23{
+    top:700px;
+    left: 60%;
+}
+
+.card-24{
+    top:700px;
+    left: 80%;
+}
+
+.shift-card{
+    width: 100%;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    padding-left: 10px;
+}
+
+.shift-card-1{
+    background-color: #ede3ff;
+}
+
+.shift-card-2{
+    background-color: #bcb4d2;
+}
+
+.shift-card-3{
+    background-color: #8b84a5;
+}
+
+.shift-card-4{
+    background-color: #28264c;
+    color: #ede3ff;
+}
