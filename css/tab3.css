@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:900');
-
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 #tab-sched-3{
     border-collapse: collapse;
@@ -8,23 +8,26 @@
     position: absolute;
     top: 0;
     left:0;
-    height: 80%;
+    height: 100%;
     width: 100%;
 }
 
 
 
+
 #tab-sched-3 td {
     padding: 5px;
-    font-family: "Lato Light";
+    font-family: 'Playfair Display', serif;
     text-align: left;
-    /*border: solid 0.5px black;*/
-    font-size: 12px;
+    border: solid 1px #d1d1d1;
+    font-size: 18px;
 }
 
 #tab-sched-3 .td-h {
     text-align: center;
-    /*border: solid 0.5px black;*/
+    border: solid 1px #d1d1d1;
+    font-family: 'Lato Light', sans-serif;
+    font-size: 14px;
 }
 
 
@@ -36,7 +39,8 @@
 }
 
 #tab-sched-3 .working{
-    background-color: #5bc0de;
+    background-color: #1e583f;
+    border-color: #1e583f;
 }
 
 #tab-sched-3 tr {
@@ -56,8 +60,8 @@
 
 }
 
-/*#tab-sched-3 td:hover {*/
-    /*border-right: solid 0.5px #6a6a6a;*/
-    /*border-left: solid 0.5px #6a6a6a;*/
-    /*cursor: pointer;*/
-/*}*/
+.day-name-td{
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+}
+

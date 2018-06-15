@@ -20,7 +20,7 @@
     font-family: 'Playfair Display', serif;
     font-size: 54px;
     z-index: 10;
-    text-shadow: 2px 2px 3px #646464;
+    text-shadow: 2px 2px 3px #000000;
 }
 
 #register-popup{

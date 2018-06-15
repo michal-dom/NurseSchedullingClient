@@ -104,9 +104,9 @@ if(isset($_POST)){
 
         echo "<table id='tab-sched-3' style=\"width: 100%\">";
         echo "<tr>";
-        echo "<td class='tdh'>Day</td>";
+        echo "<td class='tdh'> </td>";
         for ($i = 0; $i < 24; $i++ ) {
-            echo "<td class='td-h'>" . date("h:i", mktime($i, 0, 0))." <br>-<br> ". date("h:i", mktime($i+1, 0, 0)) . "</td>";
+            echo "<td class='td-h'>" . date("h:i", mktime($i, 0, 0))."</td>";
         }
         echo "</tr>";
         $counter = 0;
@@ -114,7 +114,7 @@ if(isset($_POST)){
         $k = 0;
         for ($i = 0; $i < 7; $i++ ) {
             echo "<tr>";
-            echo "<td>".$day_names[$i % 7] ."</td>";
+            echo "<td class='day-name-td'>".$day_names[$i % 7] ."</td>";
             for ($j = 0; $j < 24; $j++) {
                 if(in_array($i, $days)) {
 
@@ -129,6 +129,8 @@ if(isset($_POST)){
                         echo "<td class='day-off'></td>";
                     }
 
+                }else{
+                    echo "<td class='day-off'></td>";
                 }
 //                if(in_array($i, $days)) {
 //                    echo "<td class='working'>day = $i hour = $j</td>";

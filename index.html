@@ -36,7 +36,6 @@
 
             foo = function () {
                 $("#tab-sched-1 td").hover(function() {
-                    console.log($(this).attr("class"));
                     $('.'+$(this).attr("class")).css('background-color', 'black');
                     $('.'+$(this).attr("class")).css('color', 'white');
                 }, function() {
@@ -53,7 +52,12 @@
             }
 
             $('.view-select').on('change', function() {
-                var select_date = $(".week-select").val();
+
+                var select_date = $( ".week-select option:selected" ).val();
+                var select_user = $("#user").attr("class");
+
+//                console.log($("#user").attr("class"));
+//                $( ".week-select option:selected" ).val();
 
                 if(select_date == "default"){
                     return;
@@ -66,7 +70,7 @@
                         dataType: "html",
                         data: {
                             opt: 1,
-                            date_from: "2018-05-07 07:00:00"
+                            date_from: select_date
                         }
                     }).done(function (msg) {
                         $("#content").html(msg);
@@ -82,8 +86,8 @@
                         dataType: "html",
                         data: {
                             opt: 2,
-                            date_from: "2018-05-07 07:00:00",
-                            nurse_id: 10
+                            date_from: select_date,
+                            nurse_id: select_user
                         }
                     }).done(function (msg) {
                         $("#content").html(msg);
@@ -98,8 +102,8 @@
                         dataType: "html",
                         data: {
                             opt: 4,
-                            date_from: "2018-05-07 07:00:00",
-                            nurse_id: 10
+                            date_from: select_date,
+                            nurse_id: select_user
                         }
                     }).done(function (msg) {
                         $("#content").html(msg);
@@ -145,6 +149,71 @@
                 $('#cover').hide();
 
             });
+
+
+
+            $("#btn-register").click(function () {
+
+                fullname = $("#register-fullname-input").val();
+                mail = $("#register-mail-input").val();
+                pass = $("#register-pass-1-input").val();
+
+
+                $.ajax({
+                    url: "php/controllers/AuthController.php",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        opt: 1,
+                        fullname: fullname,
+                        mail: mail,
+                        pass: pass
+                    }
+                }).done(function (msg) {
+                    $('#register-popup').fadeOut();
+                    $('#cover').fadeOut();
+
+
+                    console.log(msg);
+                })
+
+            });
+
+            $("#btn-log").click(function () {
+                location.reload();
+            });
+
+            $("#btn-login").click(function () {
+
+                mail = $("#login-mail-input").val();
+                pass = $("#login-pass-input").val();
+
+                $.ajax({
+                    url: "php/controllers/AuthController.php",
+                    type: "POST",
+                    dataType: "json",
+                    data: {
+                        opt: 2,
+                        mail: mail,
+                        pass: pass
+                    }
+                }).done(function (msg) {
+                    $('#register-popup').fadeOut();
+                    $('#cover').fadeOut();
+                    $('#user').addClass(msg[0][4]);
+                    $('#user').html(msg[0][5] + ' ' + msg[0][6]);
+
+
+
+                    console.log(msg);
+                    console.log(msg[5]);
+                    console.log(msg[6]);
+                })
+
+            })
+
+
+
 
         })
     </script>
